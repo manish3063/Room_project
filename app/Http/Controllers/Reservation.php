@@ -46,15 +46,24 @@ class Reservation extends Controller
 
         }else{
        $user->arrival=$req->arrival;
+       $user->title=$req->title;
+       $user->company=$req->company;
+       $user->address=$req->address;
+       $user->email_id=$req->email_id;
        $user->guest_name=$req->guest_name;
        $user->departure=$req->departure;
        $user->phone_no=$req->phone_no;
        $user->city=$req->city;
+       $user->state=$req->state;
+       $user->nationality=$req->nationality;
+       $user->type_of_rooms=$req->type_of_rooms;
+       $user->no_of_rooms=$req->no_of_rooms;
        $user->advance=$req->advance;
        $user->vou_no=$req->vou_no;
        $user->bkg_no=$req->bkg_no;
        $user->status=$req->status;
        $user->source_agent=$req->source_agent;
+       $user->booking_no=$req->booking_no;
         
         
         $result=$user->save();
@@ -65,19 +74,22 @@ class Reservation extends Controller
             return ["status"=>false,"message"=>"Data has not been saved"];
         }
 
-
+ 
         }
 
        }
     // This is the search function 
        
-       function filter($guest_name){
+       function filter($guest_name ){
         
-        $userlist=Reservations::where("guest_name",$guest_name)->get();
+        $userlist=Reservations::where('guest_name', 'LIKE', '%'.$guest_name.'%')->get();
         return $userlist;
         
         
        }
+
+ 
+
 
     //test
     //     function filter(Request $req){
@@ -92,4 +104,10 @@ class Reservation extends Controller
         
         
     //    }
+
+    function getAlldata(){
+       $dbData= Reservations::all();
+       return $dbData;
+     
+    }
 }
