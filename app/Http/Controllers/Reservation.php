@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservations;
+use App\Models\payment_detail;
 use Validator;
 
 
@@ -45,6 +46,7 @@ class Reservation extends Controller
             return $validator->errors();
 
         }else{
+       $user->room_id=$req->room_id;     
        $user->arrival=$req->arrival;
        $user->title=$req->title;
        $user->company=$req->company;
@@ -69,7 +71,22 @@ class Reservation extends Controller
         $result=$user->save();
         
         if($result){
-            return ["status"=>true,"message"=>"Data has been saved"];
+              
+            $amount_details =new payment_detail;
+            $amount_details->total_amount=$req->total_amount;
+            $amount_details->deposite_amount=$req->deposite_amount;
+            $amount_details->balance_amount=$req->balance_amount;
+            $amount_details->amount_to_pay=$req->amount_to_pay;
+    
+            $result2=$amount_details->save();
+
+            if ($result2){
+                return ["status"=>true,"message"=>"Data has been saved"];
+            }else{
+                return ["status"=>false,"message"=>"Data has not been saved"];
+            }
+
+           
         }else{
             return ["status"=>false,"message"=>"Data has not been saved"];
         }
@@ -87,25 +104,9 @@ class Reservation extends Controller
         
         
        }
+       //This is the details of all guest
 
- 
-
-
-    //test
-    //     function filter(Request $req){
-    //     $user =new Reservations;
-
-    //     $user->guest_name=$req->guest_name;
-    //     $result=Reservations::where("guest_name",$user)->get();
-
-    //     return $result;
-       
-       
-        
-        
-    //    }
-
-    function getAlldata(){
+       function get_all_guest_details(){
        $dbData= Reservations::all();
        return $dbData;
      

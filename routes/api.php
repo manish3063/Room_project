@@ -6,6 +6,8 @@ use App\Http\Controllers\UserRegister;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\Reservation;
 use App\Http\Controllers\Payment_details;
+use App\Http\Controllers\Type_of_rooms;
+use App\Http\Controllers\No_of_roomes;
 
 
 /*
@@ -27,7 +29,9 @@ Route::post("register",[UserRegister::class,'Register']);
 Route::post("login",[Login::class,'Login']);
 Route::post("reservation",[Reservation::class,'Reservation']);
 Route::get("find/{guest_name}",[Reservation::class,'filter']);
-Route::get("getAlldata",[Reservation::class,'getAlldata']);
+Route::get("guest_details",[Reservation::class,'get_all_guest_details']);
 
-Route::get("payment_details/{id}",[Payment_details::class,'payment_details']);
-Route::post("payment",[Payment_details::class,'payment']);
+// Route::get("payment_details/{id}",[Payment_details::class,'payment_details']);
+// Route::post("payment",[Payment_details::class,'payment']);
+Route::get("room_type",[Type_of_rooms::class,'roomesType']);
+route::get("noOfrooms",[No_of_roomes::class,'noOfrooms']);
