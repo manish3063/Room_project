@@ -8,6 +8,7 @@ use App\Http\Controllers\Reservation;
 use App\Http\Controllers\Payment_details;
 use App\Http\Controllers\Type_of_rooms;
 use App\Http\Controllers\No_of_roomes;
+use App\Http\Controllers\Room_available_by_date;
 
 
 /*
@@ -34,4 +35,5 @@ Route::get("guest_details",[Reservation::class,'get_all_guest_details']);
 // Route::get("payment_details/{id}",[Payment_details::class,'payment_details']);
 // Route::post("payment",[Payment_details::class,'payment']);
 Route::get("room_type",[Type_of_rooms::class,'roomesType']);
-route::get("noOfrooms",[No_of_roomes::class,'noOfrooms']);
+Route::get("noOfrooms",[No_of_roomes::class,'noOfrooms']);
+Route::get("roomAvailable",[Room_available_by_date::class,'roomAvailable']);
