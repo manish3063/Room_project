@@ -20,15 +20,16 @@ class Reservation extends Controller
         //     return ["status"=>false,"message"=>"Arival Date and Departure date not be same"];
 
         // }
+
+        //  // check the same entry is entired at two times 
+         $sameEntry =Reservations::where('room_id',$req->room_id)->first();
+         if($sameEntry){
+             return ["status"=>false,"message"=>"This room is Already Booked"];
+         }
+
         
-        // check the same entry is entired at two times 
-        // $sameEntry =Reservations::where('guest_name',$req->guest_name);
-        // if($sameEntry){
-        //     return ["status"=>false,"message"=>"You have Already Registered with this userId"];
-        // }
-
-
-        $check=array(
+        
+           $check=array(
             "arrival"=>"required",
             "guest_name"=>"required",
             "departure"=>"required",
@@ -93,6 +94,9 @@ class Reservation extends Controller
 
  
         }
+
+       
+
 
        }
     // This is the search function 

@@ -35,5 +35,11 @@ Route::get("guest_details",[Reservation::class,'get_all_guest_details']);
 // Route::get("payment_details/{id}",[Payment_details::class,'payment_details']);
 // Route::post("payment",[Payment_details::class,'payment']);
 Route::get("room_type",[Type_of_rooms::class,'roomesType']);
-Route::get("noOfrooms",[No_of_roomes::class,'noOfrooms']);
-Route::get("roomAvailable",[Room_available_by_date::class,'roomAvailable']);
+Route::get("no_of_all_rooms_details",[No_of_roomes::class,'no_of_all_rooms_details']);
+Route::get("roomAvailable_details",[Room_available_by_date::class,'roomAvailable_details']);
+Route::get("Occupied_room_details",[Room_available_by_date::class,'Occupied_room_details']);
+Route::get("Occupied",[Room_available_by_date::class,'Occupied']);
+Route::get("No_of_rooms_available",[Room_available_by_date::class,'No_of_rooms_available']);
+
+
+Route::get("test",[Room_available_by_date::class,'test']);
