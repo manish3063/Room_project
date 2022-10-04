@@ -9,6 +9,7 @@ use App\Http\Controllers\Payment_details;
 use App\Http\Controllers\Type_of_rooms;
 use App\Http\Controllers\No_of_roomes;
 use App\Http\Controllers\Room_available_by_date;
+use App\Http\Controllers\New_orders;
 
 
 /*
@@ -40,6 +41,9 @@ Route::get("roomAvailable_details",[Room_available_by_date::class,'roomAvailable
 Route::get("Occupied_room_details",[Room_available_by_date::class,'Occupied_room_details']);
 Route::get("Occupied",[Room_available_by_date::class,'Occupied']);
 Route::get("No_of_rooms_available",[Room_available_by_date::class,'No_of_rooms_available']);
+Route::post("order",[New_orders::class,"order"]);
+Route::get("get_order",[New_orders::class,"get_order"]);
 
+//Route::get("test",[Room_available_by_date::class,'test']);
+//Route::post("test",[New_orders::class,"test"]);
 
-Route::get("test",[Room_available_by_date::class,'test']);
